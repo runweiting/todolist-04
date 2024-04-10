@@ -1,0 +1,14 @@
+{
+  "name": "todolist-04",
+  "version": "1.0.0",
+  "description": "### 1. 建立 node 環境    - `npm init`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  }
+}
