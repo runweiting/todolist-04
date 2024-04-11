@@ -1,17 +1,11 @@
 const http = require("http");
 const { v4: uuidv4 } = require("uuid");
+const corsHeader = require("./corsHeader");
 const successHandle = require("./successHandle");
 const errorHandle = require("./errorHandle");
 const todos = [];
 
 const requestListener = (req, res) => {
-  const headers = {
-    "Access-Control-Allow-Headers":
-      "Content-Type, Authorization, Content-Length, X-Requested-With",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "PATCH, POST, GET,OPTIONS,DELETE",
-    "Content-Type": "application/json",
-  };
   let body = "";
   req.on("data", (chunk) => {
     body += chunk;
@@ -65,10 +59,10 @@ const requestListener = (req, res) => {
       }
     });
   } else if (req.url === "/todos" && req.method === "OPTIONS") {
-    res.writeHead(200, headers);
+    res.writeHead(200, corsHeader);
     res.end();
   } else {
-    res.writeHead(404, headers);
+    res.writeHead(404, corsHeader);
     res.write(
       JSON.stringify({
         status: "error",
